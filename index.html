@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studybloom 🌸</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== WELCOME MODAL ===== -->
+  <div id="welcome-modal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="modal-icon">🌸</div>
+      <h2>Welcome to Studybloom!</h2>
+      <p>Let's personalize your planner. What's your name?</p>
+      <input type="text" id="welcome-name-input" placeholder="Enter your name..." maxlength="40" />
+      <button id="welcome-save-btn" class="btn btn-primary">Let's Go! 🚀</button>
+    </div>
+  </div>
+
+  <!-- ===== SIDEBAR ===== -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <span class="logo">🌸 Studybloom</span>
+      <button id="sidebar-toggle" class="sidebar-close-btn">✕</button>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" class="nav-link active" data-section="dashboard">🏠 Dashboard</a></li>
+      <li><a href="#" class="nav-link" data-section="student-card">🪪 Student Card</a></li>
+      <li><a href="#" class="nav-link" data-section="todo">✅ To-Do List</a></li>
+      <li><a href="#" class="nav-link" data-section="courses">📚 Courses</a></li>
+      <li><a href="#" class="nav-link" data-section="countdown">⏳ Countdowns</a></li>
+      <li><a href="#" class="nav-link" data-section="schedule">🗓️ Schedule</a></li>
+    </ul>
+    <div class="sidebar-footer">Made with 💜 for students</div>
+  </nav>
+
+  <!-- ===== MAIN WRAPPER ===== -->
+  <div id="main-wrapper">
+
+    <!-- Top Bar -->
+    <header id="topbar">
+      <button id="menu-toggle" class="menu-btn">☰</button>
+      <div id="greeting-topbar">Hello 👋</div>
+    </header>
+
+    <!-- ===== SECTIONS ===== -->
+    <main id="content-area">
+
+      <!-- DASHBOARD -->
+      <section id="dashboard" class="section active">
+        <h1 class="section-title">Dashboard 🏠</h1>
+        <p id="dashboard-greeting" class="dashboard-greeting">Hello, Student 👋</p>
+        <div class="dashboard-grid">
+          <div class="dash-card pink">
+            <div class="dash-card-icon">✅</div>
+            <div class="dash-card-info">
+              <span id="pending-count" class="dash-number">0</span>
+              <span class="dash-label">Pending Tasks</span>
+            </div>
+          </div>
+          <div class="dash-card lavender">
+            <div class="dash-card-icon">📚</div>
+            <div class="dash-card-info">
+              <span id="courses-count" class="dash-number">0</span>
+              <span class="dash-label">Courses</span>
+            </div>
+          </div>
+          <div class="dash-card mint">
+            <div class="dash-card-icon">⏳</div>
+            <div class="dash-card-info">
+              <span id="next-countdown-label" class="dash-number" style="font-size:1rem;">—</span>
+              <span class="dash-label">Next Countdown</span>
+            </div>
+          </div>
+        </div>
+        <div class="dash-section-block">
+          <h2 class="sub-title">📅 Today's Classes</h2>
+          <div id="today-classes-list" class="today-classes"></div>
+        </div>
+      </section>
+
+      <!-- STUDENT CARD -->
+      <section id="student-card" class="section hidden">
+        <h1 class="section-title">Student Card 🪪</h1>
+        <div class="card-editor-layout">
+          <!-- Editor Form -->
+          <div class="card-form-panel">
+            <h2 class="sub-title">Edit Your Card</h2>
+            <div class="form-group">
+              <label>Profile Picture</label>
+              <div class="upload-area" id="upload-area">
+                <input type="file" id="profile-pic-input" accept="image/*" hidden />
+                <img id="profile-preview-thumb" src="" alt="" class="hidden" />
+                <span id="upload-placeholder">📷 Click to upload</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" id="card-name" placeholder="Your full name" maxlength="60" />
+            </div>
+            <div class="form-group">
+              <label>Major</label>
+              <input type="text" id="card-major" placeholder="e.g. Computer Science" maxlength="60" />
+            </div>
+            <div class="form-group">
+              <label>School / University</label>
+              <input type="text" id="card-school" placeholder="e.g. Harvard University" maxlength="80" />
+            </div>
+            <div class="form-group">
+              <label>Birthday</label>
+              <input type="date" id="card-birthday" />
+            </div>
+            <div class="form-group">
+              <label>Card Color</label>
+              <div class="color-picker" id="card-color-picker">
+                <button class="color-swatch selected" data-color="#ffd6e0" style="background:#ffd6e0;" title="Pink"></button>
+                <button class="color-swatch" data-color="#e2d4f0" style="background:#e2d4f0;" title="Lavender"></button>
+                <button class="color-swatch" data-color="#c7e9fb" style="background:#c7e9fb;" title="Baby Blue"></button>
+                <button class="color-swatch" data-color="#c8f5e0" style="background:#c8f5e0;" title="Mint"></button>
+                <button class="color-swatch" data-color="#fef3cd" style="background:#fef3cd;" title="Cream"></button>
+                <button class="color-swatch" data-color="#fce4ec" style="background:#fce4ec;" title="Blush"></button>
+              </div>
+            </div>
+            <button id="save-card-btn" class="btn btn-primary">💾 Save Card</button>
+          </div>
+
+          <!-- Card Preview -->
+          <div class="card-preview-panel">
+            <h2 class="sub-title">Preview</h2>
+            <div class="student-card-preview" id="student-card-preview">
+              <div class="sc-header">
+                <img id="sc-photo" src="" alt="Photo" class="sc-photo hidden" />
+                <div id="sc-photo-placeholder" class="sc-photo-placeholder">👤</div>
+                <div class="sc-brand">🌸 Studybloom</div>
+              </div>
+              <div class="sc-body">
+                <h3 id="sc-name" class="sc-name">Your Name</h3>
+                <p id="sc-major" class="sc-major">Major</p>
+                <div class="sc-divider"></div>
+                <p id="sc-school" class="sc-info">🏫 School / University</p>
+                <p id="sc-birthday" class="sc-info">🎂 Birthday</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TO-DO LIST -->
+      <section id="todo" class="section hidden">
+        <h1 class="section-title">To-Do List ✅</h1>
+        <div class="todo-add-form card-panel">
+          <h2 class="sub-title">Add New Task</h2>
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label>Title <span class="required">*</span></label>
+              <input type="text" id="todo-title" placeholder="Task title..." maxlength="80" />
+            </div>
+            <div class="form-group">
+              <label>Deadline (optional)</label>
+              <input type="datetime-local" id="todo-deadline" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Description <span class="required">*</span></label>
+            <textarea id="todo-desc" placeholder="Describe the task..." rows="2"></textarea>
+          </div>
+          <button id="add-task-btn" class="btn btn-primary">➕ Add Task</button>
+        </div>
+        <div id="todo-list" class="todo-list"></div>
+        <button id="save-tasks-btn" class="btn btn-save">💾 Save Tasks</button>
+      </section>
+
+      <!-- COURSES -->
+      <section id="courses" class="section hidden">
+        <h1 class="section-title">Courses 📚</h1>
+        <div class="course-add-form card-panel">
+          <h2 class="sub-title">Add New Course</h2>
+          <div class="form-group">
+            <label>Course Name <span class="required">*</span></label>
+            <input type="text" id="course-name" placeholder="e.g. Introduction to Psychology" maxlength="80" />
+          </div>
+          <div class="form-group">
+            <label>Description (optional)</label>
+            <textarea id="course-desc" placeholder="Course description..." rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Upload PDF Lessons (optional)</label>
+            <input type="file" id="course-pdf-input" accept=".pdf" multiple />
+          </div>
+          <button id="add-course-btn" class="btn btn-primary">➕ Add Course</button>
+        </div>
+        <div id="courses-list" class="courses-list"></div>
+        <button id="save-courses-btn" class="btn btn-save">💾 Save Courses</button>
+      </section>
+
+      <!-- COUNTDOWN -->
+      <section id="countdown" class="section hidden">
+        <h1 class="section-title">Countdowns ⏳</h1>
+        <div class="countdown-add-form card-panel">
+          <h2 class="sub-title">Add New Countdown</h2>
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label>Event Title <span class="required">*</span></label>
+              <input type="text" id="countdown-title" placeholder="e.g. Final Exam" maxlength="60" />
+            </div>
+            <div class="form-group">
+              <label>Event Date & Time <span class="required">*</span></label>
+              <input type="datetime-local" id="countdown-date" />
+            </div>
+          </div>
+          <button id="add-countdown-btn" class="btn btn-primary">➕ Add Countdown</button>
+        </div>
+        <div id="countdowns-list" class="countdowns-list"></div>
+        <button id="save-countdowns-btn" class="btn btn-save">💾 Save Countdowns</button>
+      </section>
+
+      <!-- SCHEDULE -->
+      <section id="schedule" class="section hidden">
+        <h1 class="section-title">Weekly Schedule 🗓️</h1>
+        <div class="schedule-add-form card-panel">
+          <h2 class="sub-title">Add Class</h2>
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label>Class Name <span class="required">*</span></label>
+              <input type="text" id="class-name" placeholder="e.g. Calculus II" maxlength="60" />
+            </div>
+            <div class="form-group flex-1">
+              <label>Tutor Name</label>
+              <input type="text" id="class-tutor" placeholder="e.g. Prof. Smith" maxlength="60" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label>Room / Location</label>
+              <input type="text" id="class-room" placeholder="e.g. Room 204" maxlength="60" />
+            </div>
+            <div class="form-group">
+              <label>Day <span class="required">*</span></label>
+              <select id="class-day">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Start Time <span class="required">*</span></label>
+              <input type="time" id="class-start" />
+            </div>
+            <div class="form-group">
+              <label>End Time <span class="required">*</span></label>
+              <input type="time" id="class-end" />
+            </div>
+          </div>
+          <!-- Hidden field for editing -->
+          <input type="hidden" id="edit-class-index" value="-1" />
+          <button id="add-class-btn" class="btn btn-primary">➕ Add Class</button>
+        </div>
+
+        <!-- Timetable -->
+        <div class="timetable-wrapper">
+          <div id="schedule-timetable" class="timetable"></div>
+        </div>
+        <button id="save-schedule-btn" class="btn btn-save">💾 Save Schedule</button>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== TOAST NOTIFICATION ===== -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
