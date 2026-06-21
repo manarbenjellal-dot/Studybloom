@@ -14,6 +14,9 @@ With a cozy and aesthetic interface, StudyBloom combines multiple academic tools
   - School/University
   - Birthday
 - Save information locally
+  
+  <img src="Card.jpg">
+  
 
 ###  To-Do List
 - Create tasks
@@ -23,11 +26,17 @@ With a cozy and aesthetic interface, StudyBloom combines multiple academic tools
 - Delete tasks
 - Save progress automatically
 
+  <img src="todo.jpg">
+  
+
 ###  Course Library
 - Add courses
 - Upload PDF lesson files
 - Organize study materials
 - Manage and delete courses
+
+  <img src="course.jpg">
+
 
 ###  Countdown Manager
 - Create custom countdowns
@@ -36,6 +45,8 @@ With a cozy and aesthetic interface, StudyBloom combines multiple academic tools
   - Project deadlines
   - Important events
 - Live countdown updates
+
+  <img src="countdown.jpg">
 
 ###  Schedule Planner
 - Create weekly class schedules
@@ -46,6 +57,15 @@ With a cozy and aesthetic interface, StudyBloom combines multiple academic tools
   - Start time
   - End time
 - Organize classes by day
+
+  <img src="schedul.jpg">
+
+  ###  Study-timer
+  - start your timer
+  - & start your study session
+
+    <img src="timer.jpg">
+
 
 ###  Local Storage
 - Data remains available after refreshing the page
